@@ -15,15 +15,17 @@ if (process.env.NODE_ENV === 'prod') {
 }
 
 const app = express()
-const server = new ApolloServer({
+const apolloServer = new ApolloServer({
   schema,
   context: createContext
 })
 
 app.use(logger('dev'))
 
-server.applyMiddleware({ app })
+apolloServer.applyMiddleware({ app })
 
 app.listen({ port: 4000 }, () =>
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+  console.log(
+    `🚀 Server ready at http://localhost:4000${apolloServer.graphqlPath}`
+  )
 )
