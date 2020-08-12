@@ -8,3 +8,5 @@ node_modules
 .map
 
 migrations
+
+react-app-env.d.ts
