@@ -1,7 +1,16 @@
 import React from 'react'
+import { client } from './ApolloClient'
+import { ApolloProvider } from 'react-apollo'
+import { LoginPage } from './pages/LoginPage'
 
 function App() {
-  return <div className="App"></div>
+  return (
+    <ApolloProvider client={client}>
+      <div className="App">
+        <LoginPage />
+      </div>
+    </ApolloProvider>
+  )
 }
 
 export default App
