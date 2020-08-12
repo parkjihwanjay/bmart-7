@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prisma-sync": "npx prisma introspect && npx prisma generate",
-    "dev": "cross-env NODE_ENV=dev nodemon --exec ts-node server.ts --watch ./ -e ts",
-    "start": "cross-env NODE_ENV=prod ts-node server.ts"
+    "dev": "NODE_ENV=dev nodemon --exec ts-node server.ts --watch ./ -e ts",
+    "start": "NODE_ENV=prod ts-node server.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +15,6 @@
   "devDependencies": {
     "@prisma/cli": "^2.4.1",
     "@types/node": "^14.0.27",
-    "cross-env": "^7.0.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "ts-node": "^8.10.2",
