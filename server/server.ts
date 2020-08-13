@@ -1,11 +1,5 @@
 import dotenv from 'dotenv'
-import logger from 'morgan'
 import path from 'path'
-import express from 'express'
-import { ApolloServer } from 'apollo-server-express'
-import { schema } from './graphql'
-import { createContext } from './graphql/context'
-
 if (process.env.NODE_ENV === 'prod') {
   dotenv.config({ path: path.join(__dirname, './.env.prod') })
 } else if (process.env.NODE_ENV === 'dev') {
@@ -14,14 +8,29 @@ if (process.env.NODE_ENV === 'prod') {
   throw new Error('process.env.NODE_ENV를 설정하지 않았습니다!')
 }
 
+import express, { Router } from 'express'
+import logger from 'morgan'
+import { ApolloServer } from 'apollo-server-express'
+import { schema } from './graphql'
+import { createContext } from './graphql/context'
+import userRouter from './router'
+
 const app = express()
+
+declare global {
+  namespace Express {
+    export interface Request {
+      githubUser?: {}
+    }
+  }
+}
+app.use(logger('dev'))
+app.use(userRouter)
+
 const apolloServer = new ApolloServer({
   schema,
   context: createContext
 })
-
-app.use(logger('dev'))
-
 apolloServer.applyMiddleware({ app })
 
 app.listen({ port: 4000 }, () =>
