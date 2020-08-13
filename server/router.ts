@@ -22,7 +22,7 @@ router.get(
     const githubUser = req.githubUser
     // user를 찾고 없을시 DB에 저장
     // 해당 user에 맞는 토큰 생성 및 발행
-    res.json(req.githubUser)
+    res.json(githubUser)
   }
 )
 
@@ -52,7 +52,7 @@ async function getAccessToekn(code) {
   })
 }
 
-async function getUserData(accessToken) {
+async function getUserData(accessToken: string) {
   return await axios(accessUserUrl, {
     method: 'GET',
     headers: {
@@ -61,7 +61,7 @@ async function getUserData(accessToken) {
   })
 }
 
-function parseAccessToken(data) {
+function parseAccessToken(data): string {
   const splittedData = data.split('&')
 
   const parsedData = splittedData.reduce((parsed, currentItem) => {
