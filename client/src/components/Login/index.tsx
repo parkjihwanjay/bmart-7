@@ -12,10 +12,8 @@ export const Login = () => {
 
   return (
     <div className="login-section"> 
-      <div>
         {/* <image src={process.env.PUBLIC_URL + "/images/bmartlogo.jpeg"}/> */}
         <img className="logo" src='./images/bmartlogo.jpeg'/>
-        </div>
       <div className="social-login-wrap">
         <div className="login-btn-wrap">
         <FaGithubSquare size={50}/>

@@ -2,22 +2,14 @@ import React from 'react'
 import { client } from './ApolloClient'
 import { ApolloProvider } from 'react-apollo'
 import { LoginPage } from './pages/LoginPage'
-import styled, { css } from 'styled-components'
-
-
-const AppContainer = styled.div`
-display:flex;
-flex-direction:column;
-width:400px;
-height: 500px;
-`;
+import './app.scss'
 
 function App() {
   return (
     <ApolloProvider client={client}>
-      <AppContainer>
+      <div className="app">
         <LoginPage />
-      </AppContainer>
+      </div>
     </ApolloProvider>
   )
 }
