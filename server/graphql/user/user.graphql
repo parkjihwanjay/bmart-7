@@ -9,8 +9,21 @@ type User {
   createdAt: Date!
 }
 
+input UserFindInput {
+  id: Int!
+}
+
+input UserSearchInput {
+  id: Int
+  userId: String
+  email: String
+  phone: String
+  address: String
+}
+
 type Query {
-  getUsers: [User]!
+  getOneUser(input: UserFindInput!): User
+  getUsers(input: UserSearchInput): [User]!
 }
 
 input UserInput {

@@ -2,13 +2,22 @@ import { Context } from '../context'
 
 export const userResolver = {
   Query: {
-    getUsers: (parent, args, context: Context) => {
-      return context.prisma.user.findMany()
+    getOneUser: async (parent, args, context: Context) => {
+      return await context.prisma.user.findOne({
+        where: args.input
+      })
+    },
+    getUsers: async (parent, args, context: Context) => {
+      return await context.prisma.user.findMany({
+        where: args.input
+      })
     }
   },
   Mutation: {
-    insertUser: (parent, args, context: Context) => {
-      return context.prisma.user.create({ data: { email: args.email } })
+    insertUser: async (parent, args, context: Context) => {
+      return await context.prisma.user.create({
+        data: args.input
+      })
     }
   }
 }
