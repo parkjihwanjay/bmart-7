@@ -27,13 +27,13 @@ export const SocialLoginBtn = (props: any) => {
   }
 
   return (
-    <div className="login-btn-wrap" onClick={githubLoginHandler}>
+    <button className="login-btn-wrap" onClick={githubLoginHandler}>
       {props.icon === 'github' ? (
         <FaGithubSquare size={50} />
       ) : (
-        <FaFacebookSquare size={50} />
+        <FaFacebookSquare className="facebook" size={50} />
       )}
       <div className="login-text">{props.children}</div>
-    </div>
+    </button>
   )
 }
