@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test jest",
     "prisma-sync": "npx prisma introspect && npx prisma generate",
     "dev": "NODE_ENV=dev nodemon --exec ts-node server.ts --watch ./ -e ts",
     "start": "NODE_ENV=prod ts-node server.ts"
@@ -14,19 +14,24 @@
   "license": "ISC",
   "devDependencies": {
     "@prisma/cli": "^2.4.1",
+    "@types/jest": "^26.0.9",
     "@types/node": "^14.0.27",
+    "jest": "^26.4.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
+    "ts-jest": "^26.2.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   },
   "dependencies": {
     "@prisma/client": "^2.4.1",
     "apollo-server-express": "^2.16.1",
+    "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "graphql": "^15.3.0",
     "graphql-tools": "^6.0.18",
+    "jsonwebtoken": "^8.5.1",
     "merge-graphql-schemas": "^1.7.8",
     "path": "^0.12.7"
   }
