@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 import path from 'path'
+
 if (process.env.NODE_ENV === 'prod') {
   dotenv.config({ path: path.join(__dirname, './.env.prod') })
 } else if (process.env.NODE_ENV === 'dev') {
@@ -16,11 +17,13 @@ import { createContext } from './graphql/context'
 import userRouter from './router'
 
 const app = express()
-
 declare global {
   namespace Express {
     export interface Request {
-      githubUser?: {}
+      githubUser?: {
+        id: number
+        login: string
+      }
     }
   }
 }
