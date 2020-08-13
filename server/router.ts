@@ -6,6 +6,7 @@ import {
 } from './config/github-config'
 import { PrismaClient } from '@prisma/client'
 import {encodeJwt} from './utils/jwt'
+import queryParser from 'query-parser-url'
 
 const prisma = new PrismaClient()
 const router = Router()
@@ -84,14 +85,6 @@ async function getUserData(accessToken: string) {
 }
 
 function parseAccessToken(data): string {
-  const splittedData = data.split('&')
-
-  const parsedData = splittedData.reduce((parsed, currentItem) => {
-    const keyValue = currentItem.split('=')
-    const key = keyValue[0]
-    const value = keyValue[1]
-    parsed[key] = value
-    return parsed
-  }, {})
+  const parsedData = queryParser(data)
   return parsedData.access_token
 }
