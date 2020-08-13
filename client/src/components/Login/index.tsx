@@ -2,74 +2,33 @@ import React from 'react'
 import { useQuery } from 'react-apollo'
 import { GET_USERS } from './gql'
 
-import bmartLogo from '../../imgs/bmartlogo.jpeg'
+import './login.scss';
 import { FaGithubSquare } from 'react-icons/fa'
 import { FaFacebookSquare } from 'react-icons/fa';
-import styled, { css } from 'styled-components';
-
-const LoginSection = styled.div`
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content: center;
-  align-items: center;
-  border:1px solid gray;
-  
-`
-const Logo = styled.img`
-  width: 250px;
-  margin-bottom:10px
-`;
-
-const SocialLoginWrap = styled.div`
-  width:60%;
-  display:flex;
-  flex-direction:column;
-  margin-bottom: 50px;
-`;
-
-const SocialLoginTitle = styled.div`
-  text-align: center;
-  color: black;
-  font-weight: 600;
-  margin-bottom:10px;
-  color:gray;
-`
-
-const LoginBtnWrap = styled.div`
-  display:flex;
-  flex-direction:row;
-  align-items: center;
-  margin-bottom:15px;
-  background-color: lightgray;
-  border-radius: 8px;
-`;
-
-const LoginText = styled.div`
-margin-left:10%
-`;
-
 
 
 
 export const Login = () => {
 
   return (
-    <LoginSection> 
-      <Logo src={bmartLogo} />
-      <SocialLoginWrap>
-        <LoginBtnWrap>
+    <div className="login-section"> 
+      <div>
+        {/* <image src={process.env.PUBLIC_URL + "/images/bmartlogo.jpeg"}/> */}
+        <img className="logo" src='./images/bmartlogo.jpeg'/>
+        </div>
+      <div className="social-login-wrap">
+        <div className="login-btn-wrap">
         <FaGithubSquare size={50}/>
-        <LoginText>Login woth Github</LoginText>
-        </LoginBtnWrap>
+        <div className="login-text">Login woth Github</div>
+        </div>
 
-        <LoginBtnWrap>
+        <div className="login-btn-wrap">
         <FaFacebookSquare size={50}/>
-        <LoginText>Login woth Facebook</LoginText>
-        </LoginBtnWrap>
-        <SocialLoginTitle>Click SocialLogin</SocialLoginTitle>
-      </SocialLoginWrap>
-    </LoginSection>
+        <div className="login-text">Login woth Facebook</div>
+        </div>
+        <div className="social-login-title">Click SocialLogin</div>
+      </div>
+    </div>
   )
 }
 
