@@ -14,8 +14,8 @@ type IDecoded = {
   sub?: string
 }
 
-type IGithubUser = {
-  login: string
+type IUser = {
+  userId: string
   id: number
 }
 
@@ -25,11 +25,11 @@ const jwtOption = {
   subject: 'userInfo'
 }
 
-export const encodeJwt = async (githubUser: IGithubUser): Promise<string> => {
+export const encodeJwt = async ({id, userId}): Promise<string> => {
   const token = await jwt.sign(
     {
-      id: githubUser.id,
-      username: githubUser.login
+      id,
+      userId
     },
     process.env.JWT_SECRET,
     jwtOption

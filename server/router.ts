@@ -2,31 +2,53 @@ import { Router, Request, Response, NextFunction } from 'express'
 import axios from 'axios'
 import {
   accessUserUrl,
-  githubCallbackUrl,
-  githubLoginUrl,
   githubTokenUrl
 } from './config/github-config'
+import { PrismaClient } from '@prisma/client'
+import {encodeJwt} from './utils/jwt'
 
+const prisma = new PrismaClient()
 const router = Router()
 
-router.get('/api/github-login', async (req: Request, res: Response) => {
-  res.redirect(
-    `${githubLoginUrl}/?client_id=${process.env.GITHUB_CLIENT_ID}&redirect_uri=${githubCallbackUrl}`
-  )
-})
-
 router.get(
-  '/api/github-login/callback',
+  '/api/github-login',
   getGithubUser,
+  findOrCreateUser,
   async (req: Request, res: Response) => {
-    const githubUser = req.githubUser
-    // user를 찾고 없을시 DB에 저장
+    const user = req.user
     // 해당 user에 맞는 토큰 생성 및 발행
-    res.json(githubUser)
+    const token = await encodeJwt(user)
+    res.status(200).json({
+      token,
+    })
   }
 )
 
 export default router
+
+async function findOrCreateUser(req:Request, res:Response, next:NextFunction){
+  const githubUser = req.githubUser
+    // id를 기준으로 DB에서 user를 찾는다
+    let user = await prisma.user.findOne({
+      where : {
+        id : githubUser.id
+      }
+    })
+
+    // 해당 user가 없어 DB에 등록
+    if(!user){
+      user = await prisma.user.create({
+        data : {
+          id : githubUser.id,
+          userId : githubUser.login,
+          email : githubUser.email,
+        }
+      })
+    }
+
+    req.user = user
+    next()
+}
 
 async function getGithubUser(req: Request, res: Response, next: NextFunction) {
   const code = req.query.code
