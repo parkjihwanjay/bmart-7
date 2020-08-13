@@ -1,12 +1,27 @@
+scalar Date
+
 type User {
   id: Int!
-  email: String!
+  userId: String!
+  email: String
+  phone: String
+  address: String
+  createdAt: Date!
 }
 
 type Query {
-  getUsers: [User!]!
+  getUsers: [User]!
+}
+
+input UserInput {
+  id: Int!
+  userId: String!
+  email: String
+  phone: String
+  address: String
+  createdAt: Date
 }
 
 type Mutation {
-  insertUser(email: String!): User!
+  insertUser(input: UserInput!): User!
 }

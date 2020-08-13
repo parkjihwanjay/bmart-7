@@ -8,6 +8,10 @@ datasource db {
 }
 
 model User {
-  id    Int    @default(autoincrement()) @id
-  email String
+  id        Int       @id
+  userId    String
+  email     String?
+  phone     String?
+  address   String?
+  createdAt DateTime? @default(now())
 }
