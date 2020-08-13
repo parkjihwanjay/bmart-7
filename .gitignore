@@ -9,4 +9,8 @@ node_modules
 
 migrations
 
+test.*
+test
+__test__
+
 react-app-env.d.ts
