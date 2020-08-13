@@ -6,26 +6,17 @@ import './login.scss'
 import { FaGithubSquare } from 'react-icons/fa'
 import { FaFacebookSquare } from 'react-icons/fa'
 import axios from 'axios'
-
+import queryParser from 'query-parser-url'
 const baseUrl = 'http://localhost:4000'
 const githubLoginUrl = 'https://github.com/login/oauth/authorize'
-// const githubCallbackUrl = `${baseUrl}/api/github-login/callback`
 const githubCallbackUrl = `http://localhost:3000`
 const GITHUB_CLIENT_ID='9368cfd68ad4ee3c646e'
 
 export const Login = () => {
   useEffect(() => {
     const url = window.location.search.substring(1);
-    const queryList = url.split('&')
 
-    const queryObject = queryList.reduce((query, currentItem) => {
-      const keyValue = currentItem.split('=')
-      const key = keyValue[0]
-      const value = keyValue[1]
-      query[key] = value
-      return query
-    }, {})
-    
+    const queryObject = queryParser(url)
     const code = queryObject['code']
     if(!code) return
 
