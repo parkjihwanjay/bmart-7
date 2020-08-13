@@ -1,12 +1,40 @@
+scalar Date
+
 type User {
   id: Int!
-  email: String!
+  userId: String!
+  email: String
+  phone: String
+  address: String
+  createdAt: Date!
+}
+
+input UserFindInput {
+  id: Int!
+}
+
+input UserSearchInput {
+  id: Int
+  userId: String
+  email: String
+  phone: String
+  address: String
 }
 
 type Query {
-  getUsers: [User!]!
+  getOneUser(input: UserFindInput!): User
+  getUsers(input: UserSearchInput): [User]!
+}
+
+input UserInput {
+  id: Int!
+  userId: String!
+  email: String
+  phone: String
+  address: String
+  createdAt: Date
 }
 
 type Mutation {
-  insertUser(email: String!): User!
+  insertUser(input: UserInput!): User!
 }
