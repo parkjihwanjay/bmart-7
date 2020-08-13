@@ -9,7 +9,6 @@ import { FaFacebookSquare } from 'react-icons/fa'
 export const Login = () => {
   return (
     <div className="login-section">
-      {/* <image src={process.env.PUBLIC_URL + "/images/bmartlogo.jpeg"}/> */}
       <img className="logo" src="./images/bmartlogo.jpeg" />
       <div className="social-login-wrap">
         <div className="login-btn-wrap">
@@ -26,16 +25,3 @@ export const Login = () => {
     </div>
   )
 }
-
-// export const Login = () => {
-//   const { loading, error, data } = useQuery(GET_USERS)
-//   if (loading) return <p>Loading...</p>
-//   if (error) return <p>Error!(</p>
-//   return (
-//     <ul>
-//       {data.users.map(({ code, name }) => (
-//         <li key={code}>{name}</li>
-//       ))}
-//     </ul>
-//   )
-// }
