@@ -6,8 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prisma-sync": "npx prisma introspect && npx prisma generate",
-    "dev": "NODE_ENV=dev nodemon --exec ts-node server.ts --watch ./ -e ts",
-    "start": "NODE_ENV=prod ts-node server.ts"
+    "prisma-sync:dev": "dotenv -e .env.dev -- cross-var wait-on tcp:%DB_PORT% && npm run prisma-sync",
+    "db-forward": "dotenv -e .env.dev -- cross-var \"ssh -i %PEM_PATH% -L %DB_PORT%:localhost:%DB_PORT% %SERVER_USER%@%SERVER_HOST%\"",
+    "build:watch": "npm run prisma-sync:dev && NODE_ENV=dev nodemon --exec ts-node server.ts --watch ./ -e ts",
+    "dev": "npm-run-all --parallel db-forward build:watch",
+    "start": "npm run prisma-sync && NODE_ENV=prod ts-node server.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +18,14 @@
   "devDependencies": {
     "@prisma/cli": "^2.4.1",
     "@types/node": "^14.0.27",
+    "cross-var": "^1.1.0",
+    "dotenv-cli": "^3.2.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
+    "npm-run-all": "^4.1.5",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "wait-on": "^5.2.0"
   },
   "dependencies": {
     "@prisma/client": "^2.4.1",
