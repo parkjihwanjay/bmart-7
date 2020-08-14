@@ -10,7 +10,7 @@ const githubLoginUrl = 'https://github.com/login/oauth/authorize'
 const githubCallbackUrl = `http://localhost:3000`
 const GITHUB_CLIENT_ID = '9368cfd68ad4ee3c646e'
 
-export const SocialLoginBtn = (props: any) => {
+export const SocialLoginBtn = (props: { icon: string; text: string }) => {
   useEffect(() => {
     const url = window.location.search.substring(1)
 
