@@ -5,6 +5,10 @@ import axios from 'axios'
 import queryParser from 'query-parser-url'
 import {socialSites} from './config'
 
+const socialLoginBtnList = socialSites.map((site) => {
+  return <SocialLoginBtn icon={site.icon} text={site.text} href={site.href}/>
+})
+
 export const Login = () => {
   useEffect(() => {
     const url = window.location.search.substring(1)
@@ -17,10 +21,6 @@ export const Login = () => {
       localStorage.setItem('token', res.data.token)
     })
   }, []);
-
-  const socialLoginBtnList = socialSites.map((site) => {
-    return <SocialLoginBtn icon={site.icon} text={site.text} href={site.href}/>
-  })
 
   return (
     <div className="login-section">
