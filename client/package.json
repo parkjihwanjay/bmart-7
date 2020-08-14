@@ -13,9 +13,11 @@
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
+    "axios": "^0.19.2",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
     "node-sass": "^4.14.1",
+    "query-parser-url": "^1.0.4",
     "react": "^16.13.1",
     "react-apollo": "^3.1.5",
     "react-dom": "^16.13.1",
@@ -44,5 +46,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:4000"
 }
