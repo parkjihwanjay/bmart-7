@@ -23,7 +23,10 @@ export const SocialLoginBtn = (props: { icon: string; text: string }) => {
     })
   })
   const githubLoginHandler = async e => {
-    location.href = `https://github.com/login/oauth/authorize/?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${githubCallbackUrl}`
+    if (props.icon === 'github') {
+      location.href = `https://github.com/login/oauth/authorize/?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${githubCallbackUrl}`
+      return
+    }
   }
 
   return (
