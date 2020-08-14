@@ -25,7 +25,7 @@ const jwtOption = {
   subject: 'userInfo'
 }
 
-export const encodeJwt = async ({id, userId}): Promise<string> => {
+export const encodeJwt = async ({id, userId} : IUser): Promise<string> => {
   const token = await jwt.sign(
     {
       id,
