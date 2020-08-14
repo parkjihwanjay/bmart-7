@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'prod') {
 }
 
 const app = express()
-
+app.use(express.static(path.join(__dirname, "../client/build")));
 declare global {
   namespace Express {
     export interface Request {
