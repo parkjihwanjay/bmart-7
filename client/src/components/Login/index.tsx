@@ -7,8 +7,8 @@ export const Login = () => {
     <div className="login-section">
       <img className="logo" src="./images/bmartlogo.jpeg" />
       <div className="social-login-wrap">
-        <SocialLoginBtn icon="github" text="Login woth Github" />
-        <SocialLoginBtn icon="facebook" text="Login woth Facebook" />
+        <SocialLoginBtn icon="github" text="Login with Github" />
+        <SocialLoginBtn icon="facebook" text="Login with Facebook" />
         <div className="social-login-title">Click SocialLogin</div>
       </div>
     </div>
