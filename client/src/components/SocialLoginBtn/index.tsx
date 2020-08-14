@@ -9,8 +9,8 @@ type IProps = {
   href : string
 }
 
-const getIcon = (type : string) => {
-  switch(type){
+const getIcon = (icon : string) => {
+  switch(icon){
     case 'github':
       return <FaGithubSquare size={50} />
     case 'facebook':
