@@ -33,7 +33,7 @@ export const SocialLoginBtn = (props: any) => {
       ) : (
         <FaFacebookSquare className="facebook" size={50} />
       )}
-      <div className="login-text">{props.children}</div>
+      <div className="login-text">{props.text}</div>
     </button>
   )
 }
