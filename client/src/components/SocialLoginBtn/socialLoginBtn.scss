@@ -1,0 +1,17 @@
+.login-btn-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1em;
+  background-color: lightgray;
+  border-radius: 0.7em;
+  cursor: pointer;
+
+  .login-text {
+    margin: 0 auto;
+  }
+
+  .facebook {
+    color: #1349c2;
+  }
+}

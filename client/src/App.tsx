@@ -3,6 +3,7 @@ import { client } from './ApolloClient'
 import { ApolloProvider } from 'react-apollo'
 import { LoginPage } from './pages/LoginPage'
 import './app.scss'
+import './reset.scss'
 
 function App() {
   return (
