@@ -1,5 +1,9 @@
 @import '../../styles/package';
 
+a {
+  text-decoration: none;
+}
+
 .login-btn-wrap {
   display: flex;
   flex-direction: row;
@@ -8,6 +12,7 @@
   background-color: lightgray;
   border-radius: 0.7em;
   cursor: pointer;
+  width: 100%;
 
   .login-text {
     margin: 0 auto;
