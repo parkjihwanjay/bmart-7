@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test jest",
-    "prisma-sync": "npx prisma introspect && npx prisma generate",
+    "prisma-sync": "npx prisma introspect --experimental-reintrospection && npx prisma generate",
     "prisma-sync:dev": "dotenv -e .env.dev -- cross-var wait-on tcp:%DB_PORT% && npm run prisma-sync",
     "db-forward": "dotenv -e .env.dev -- cross-var \"ssh -i %PEM_PATH% -L %DB_PORT%:localhost:%DB_PORT% %SERVER_USER%@%SERVER_HOST%\"",
-    "build:watch": "npm run prisma-sync:dev && NODE_ENV=dev nodemon --exec ts-node server.ts --watch ./ -e ts",
+    "build:watch": "NODE_ENV=dev nodemon --exec ts-node server.ts --watch ./ -e ts",
     "dev": "npm-run-all --parallel db-forward build:watch",
-    "start": "npm run prisma-sync && NODE_ENV=prod ts-node server.ts"
+    "start": "NODE_ENV=prod ts-node server.ts"
   },
   "keywords": [],
   "author": "",
