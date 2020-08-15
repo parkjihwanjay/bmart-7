@@ -1,0 +1,7 @@
+@import 'package';
+
+html {
+  * {
+    @include font-family();
+  }
+}
