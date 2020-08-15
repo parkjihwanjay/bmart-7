@@ -1,14 +1,10 @@
 import { Router, Request, Response, NextFunction } from 'express'
 import axios from 'axios'
-import {
-  accessUserUrl,
-  githubTokenUrl
-} from './config/github-config'
-import { PrismaClient } from '@prisma/client'
-import {encodeJwt} from './utils/jwt'
+import { accessUserUrl, githubTokenUrl } from './config/github-config'
+import prisma from './prisma'
+import { encodeJwt } from './utils/jwt'
 import queryParser from 'query-parser-url'
 
-const prisma = new PrismaClient()
 const router = Router()
 
 router.get(
@@ -20,41 +16,45 @@ router.get(
     // 해당 user에 맞는 토큰 생성 및 발행
     const token = await encodeJwt(user)
     res.status(200).json({
-      token,
+      token
     })
   }
 )
 
 export default router
 
-async function findOrCreateUser(req:Request, res:Response, next:NextFunction){
+async function findOrCreateUser(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   const githubUser = req.githubUser
-    // id를 기준으로 DB에서 user를 찾는다
-    let user = await prisma.user.findOne({
-      where : {
-        id : githubUser.id
+  // id를 기준으로 DB에서 user를 찾는다
+  let user = await prisma.user.findOne({
+    where: {
+      id: githubUser.id
+    }
+  })
+
+  // 해당 user가 없어 DB에 등록
+  if (!user) {
+    user = await prisma.user.create({
+      data: {
+        id: githubUser.id,
+        userId: githubUser.login,
+        email: githubUser.email
       }
     })
+  }
 
-    // 해당 user가 없어 DB에 등록
-    if(!user){
-      user = await prisma.user.create({
-        data : {
-          id : githubUser.id,
-          userId : githubUser.login,
-          email : githubUser.email,
-        }
-      })
-    }
-
-    req.user = user
-    next()
+  req.user = user
+  next()
 }
 
 async function getGithubUser(req: Request, res: Response, next: NextFunction) {
   const code = req.query.code
   try {
-    const { data } = await getAccessToekn(code)
+    const { data } = await getAccessToken(code)
     const accessToken = parseAccessToken(data)
     const githubUser = await getUserData(accessToken)
     req.githubUser = githubUser.data
@@ -64,7 +64,7 @@ async function getGithubUser(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-async function getAccessToekn(code) {
+async function getAccessToken(code) {
   return await axios(githubTokenUrl, {
     method: 'POST',
     params: {

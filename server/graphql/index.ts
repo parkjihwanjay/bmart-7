@@ -9,5 +9,5 @@ const resolvers = mergeResolvers([userResolver])
 
 export const schema = makeExecutableSchema({
   resolvers,
-  typeDefs: mergeTypes(allTypes)
+  typeDefs: mergeTypes(allTypes),
 })

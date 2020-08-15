@@ -13,7 +13,7 @@ export const Login = () => {
     const code = queryObject['code']
     if (!code) return
 
-    axios.get(`/api/github-login/?code=${code}`).then(res => {
+    axios.get(`/api/github-login/?code=${code}`).then((res) => {
       localStorage.setItem('token', res.data.token)
     })
   }, [])
