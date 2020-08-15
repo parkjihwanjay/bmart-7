@@ -1,5 +1,7 @@
 @import 'package';
 
-* {
-  font-family: sans-serif;
+html {
+  * {
+    @include font-family();
+  }
 }

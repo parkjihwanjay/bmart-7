@@ -3,3 +3,11 @@
   align-items: center;
   justify-self: center;
 }
+
+@mixin font-family($font: '') {
+  @if $font == '' {
+    font-family: $font-main, sans-serif;
+  } @else {
+    font-family: $font, $font-main, sans-serif;
+  }
+}
