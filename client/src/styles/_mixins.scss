@@ -4,8 +4,8 @@
   justify-self: center;
 }
 
-@mixin font-family($font: '') {
-  @if $font == '' {
+@mixin font-family($font: $font-main) {
+  @if $font == $font-main {
     font-family: $font-main, sans-serif;
   } @else {
     font-family: $font, $font-main, sans-serif;
