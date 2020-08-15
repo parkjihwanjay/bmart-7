@@ -11,18 +11,6 @@ module.exports = {
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
-    '@typescript-eslint/member-delimiter-style': [
-      'error',
-      {
-        multiline: {
-          delimiter: 'none', // 'none' or 'semi' or 'comma'
-          requireLast: false,
-        },
-        singleline: {
-          delimiter: 'none', // 'semi' or 'comma'
-          requireLast: false,
-        },
-      },
-    ],
+    '@typescript-eslint/member-delimiter-style': 'off',
   },
 }
