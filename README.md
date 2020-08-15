@@ -2,9 +2,9 @@
 
 ## 👨‍👨‍👧Contributors
 
-- [![title](https://img.shields.io/badge/DEVLOPER-최범수-blue)](https://github.com/choibumsu)
-- [![title](https://img.shields.io/badge/DEVLOPER-박지환-blue)](https://github.com/parkjihwanjay)
-- [![title](https://img.shields.io/badge/DEVLOPER-김영지-blue)](https://github.com/blair-0404)
+- [![title](https://img.shields.io/badge/DEVELOPER-최범수-blue)](https://github.com/choibumsu)
+- [![title](https://img.shields.io/badge/DEVELOPER-박지환-blue)](https://github.com/parkjihwanjay)
+- [![title](https://img.shields.io/badge/DEVELOPER-김영지-blue)](https://github.com/blair-0404)
 
 ---
 
