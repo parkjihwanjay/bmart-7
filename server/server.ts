@@ -1,4 +1,4 @@
-import express, { Router } from 'express'
+import express from 'express'
 import logger from 'morgan'
 import { ApolloServer } from 'apollo-server-express'
 import { schema } from './graphql'
@@ -16,19 +16,19 @@ if (process.env.NODE_ENV === 'prod') {
 }
 
 const app = express()
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, '../client/build')))
 declare global {
   namespace Express {
     export interface Request {
       githubUser?: {
         id: number
         login: string
-        email? : string
+        email?: string
       }
-      user? : {
+      user?: {
         id: number
         userId: string
-        email? : string
+        email?: string
       }
     }
   }
@@ -38,13 +38,11 @@ app.use(userRouter)
 
 const apolloServer = new ApolloServer({
   schema,
-  context: createContext
+  context: createContext,
 })
 
 apolloServer.applyMiddleware({ app })
 
 app.listen({ port: 4000 }, () =>
-  console.log(
-    `🚀 Server ready at http://localhost:4000${apolloServer.graphqlPath}`
-  )
+  console.log(`🚀 Server ready at http://localhost:4000${apolloServer.graphqlPath}`)
 )
