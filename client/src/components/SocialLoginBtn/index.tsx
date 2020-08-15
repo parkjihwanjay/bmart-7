@@ -1,16 +1,16 @@
 import React from 'react'
-import './socialLoginBtn.scss'
+import './style.scss'
 import { FaGithubSquare } from 'react-icons/fa'
 import { FaFacebookSquare } from 'react-icons/fa'
 
 type IProps = {
-  icon : string
-  text : string
-  href : string
+  icon: string
+  text: string
+  href: string
 }
 
-const getIcon = (icon : string) => {
-  switch(icon){
+const getIcon = (icon: string) => {
+  switch (icon) {
     case 'github':
       return <FaGithubSquare size={50} />
     case 'facebook':
@@ -18,7 +18,7 @@ const getIcon = (icon : string) => {
   }
 }
 export const SocialLoginBtn = (props: IProps) => {
-  const {icon, href, text} = props
+  const { icon, href, text } = props
   return (
     <a href={href}>
       <button className="login-btn-wrap">

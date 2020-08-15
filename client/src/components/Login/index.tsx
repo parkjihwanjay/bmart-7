@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react'
-import { SocialLoginBtn } from '../SocialLoginBtn/index'
-import './login.scss'
+import React, { useEffect } from 'react'
+import { SocialLoginBtn } from '@/components/SocialLoginBtn'
+import './style.scss'
 import axios from 'axios'
 import queryParser from 'query-parser-url'
-import {socialSites} from './config'
+import { socialSites } from './config'
 
 export const Login = () => {
   useEffect(() => {
@@ -16,13 +16,13 @@ export const Login = () => {
     axios.get(`/api/github-login/?code=${code}`).then(res => {
       localStorage.setItem('token', res.data.token)
     })
-  }, []);
+  }, [])
 
   return (
     <div className="login-section">
       <img className="logo" src="./images/bmartlogo.jpeg" />
       <div className="social-login-wrap">
-        {socialSites.map((site) => {
+        {socialSites.map(site => {
           return <SocialLoginBtn {...site} />
         })}
         <div className="social-login-title">Click SocialLogin</div>
