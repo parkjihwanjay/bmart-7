@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { client } from './ApolloClient'
 import { ApolloProvider } from 'react-apollo'
 import { LoginPage } from './pages/LoginPage'
@@ -10,9 +11,15 @@ import './styles/fonts.scss'
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="app">
-        <LoginPage />
-      </div>
+      <Router>
+        <div className="app">
+          <Switch>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </ApolloProvider>
   )
 }
