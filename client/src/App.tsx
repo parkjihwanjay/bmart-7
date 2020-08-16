@@ -2,11 +2,11 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { client } from './ApolloClient'
 import { ApolloProvider } from 'react-apollo'
-import { LoginPage } from './pages/LoginPage'
-import './app.scss'
-import './styles/reset.scss'
-import './styles/base.scss'
-import './styles/fonts.scss'
+import { LoginPage } from '@/pages/LoginPage'
+import '@/app.scss'
+import '@/styles/reset.scss'
+import '@/styles/base.scss'
+import '@/styles/fonts.scss'
 
 function App() {
   return (
