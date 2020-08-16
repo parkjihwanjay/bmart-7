@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import './style.scss'
 import { FiArrowLeftCircle } from 'react-icons/fi'
 import { FiArrowRightCircle } from 'react-icons/fi'
@@ -12,16 +12,36 @@ const imgUrlArr: Array<string> = [
 ]
 
 export const Carousel: React.FC = () => {
-  const clickLeftBtn = (e) => {
-    console.log(e.target)
-  }
+  const totalSlides = imgUrlArr.length - 1
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const slideRef = useRef(null)
 
   const clickLRightBtn = () => {
-    console.log('rr')
+    if (currentSlide >= totalSlides) {
+      setCurrentSlide(0)
+    } else {
+      setCurrentSlide(currentSlide + 1)
+    }
   }
+
+  const clickLeftBtn = () => {
+    if (currentSlide === 0) {
+      setCurrentSlide(totalSlides)
+    } else {
+      setCurrentSlide(currentSlide - 1)
+    }
+  }
+
+  useEffect(() => {
+    slideRef.current.style.transition = 'all 0.5s ease-in-out'
+    // 백틱사용해 슬라이드로 이동하는 애미메이션
+    slideRef.current.style.transform = `translateX(-${currentSlide}00%)`
+  }, [currentSlide])
+
   return (
     <div className="carousel">
-      <div className="images">
+      {/* {currentSlide} */}
+      <div className="images" ref={slideRef}>
         {imgUrlArr.map((url: string, idx: number) => (
           <img data-id={idx} src={url} alt="cat" />
         ))}
