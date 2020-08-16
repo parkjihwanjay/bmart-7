@@ -1,5 +1,5 @@
 import React from 'react'
-import './socialLoginBtn.scss'
+import './style.scss'
 import { FaGithubSquare } from 'react-icons/fa'
 import { FaFacebookSquare } from 'react-icons/fa'
 
