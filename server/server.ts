@@ -39,6 +39,7 @@ app.use(userRouter)
 const apolloServer = new ApolloServer({
   schema,
   context: createContext,
+  debug: process.env.NODE_ENV === 'dev',
 })
 
 apolloServer.applyMiddleware({ app })
