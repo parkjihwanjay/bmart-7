@@ -6,6 +6,17 @@
   @include flex-center;
   flex-direction: row;
   overflow: hidden;
+  touch-action: auto;
+
+  .cur-number {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    color: black;
+    background-color: lightgray;
+    padding: 0.3em;
+    border-radius: 0.5em;
+  }
 
   .left-arrow-btn {
     position: absolute;
@@ -16,11 +27,11 @@
   .images {
     display: flex;
     flex-direction: row;
-    // transform: translate(-450px);
+    transform: translate(-450px);
 
     img {
       width: 100%;
-      height: 15rem;
+      height: 10rem;
     }
   }
 
