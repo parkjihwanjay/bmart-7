@@ -5,3 +5,8 @@ html {
     @include font-family();
   }
 }
+
+#app {
+  display: flex;
+  justify-content: center;
+}
