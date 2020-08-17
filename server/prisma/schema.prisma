@@ -8,10 +8,66 @@ datasource db {
 }
 
 model User {
-  id        Int       @id
+  id        Int        @id
   userId    String
   email     String?
   phone     String?
   address   String?
-  createdAt DateTime? @default(now())
+  createdAt DateTime?  @default(now())
+  favorites Favorite[]
+}
+
+model MainCategory {
+  id         Int           @default(autoincrement()) @id
+  title      String
+  sectionId  Int
+  section    Section       @relation(fields: [sectionId], references: [id])
+  categories SubCategory[]
+
+  @@index([sectionId], name: "sectionId_idx")
+}
+
+model Product {
+  id          Int          @default(autoincrement()) @id
+  title       String
+  categoryId  Int?
+  originPrice Int
+  salePrice   Int
+  salePercent Int?
+  isMain      Int          @default(0)
+  hit         Int          @default(0)
+  amount      Int          @default(0)
+  createdAt   DateTime     @default(now())
+  imageUrls   Json
+  category    SubCategory? @relation(fields: [categoryId], references: [id])
+  favorites   Favorite[]
+
+  @@index([categoryId], name: "categoryId_idx")
+}
+
+model Section {
+  id             Int            @default(autoincrement()) @id
+  title          String
+  mainCategories MainCategory[]
+}
+
+model SubCategory {
+  id             Int          @default(autoincrement()) @id
+  title          String
+  mainCategoryId Int
+  mainCategory   MainCategory @relation(fields: [mainCategoryId], references: [id])
+  products       Product[]
+
+  @@index([mainCategoryId], name: "mainCategoryId_idx")
+}
+
+model Favorite {
+  id        Int     @default(autoincrement()) @id
+  productId Int
+  userId    Int
+  product   Product @relation(fields: [productId], references: [id])
+  user      User    @relation(fields: [userId], references: [id])
+
+  @@index([productId], name: "productId")
+  @@index([userId], name: "userId_idx")
 }

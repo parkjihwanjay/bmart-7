@@ -1,0 +1,14 @@
+scalar Date
+
+type Product {
+  id: Int!
+  title: String!
+  category: Category!
+  originPrice: Int!
+  salePrice: Int!
+  salePercent: Int
+  isMain: Boolean!
+  hit: Int!
+  amount: Int!
+  imageUrls: [String!]
+}

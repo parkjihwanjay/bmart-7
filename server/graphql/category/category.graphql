@@ -1,0 +1,23 @@
+type Section {
+  id: Int!
+  title: String!
+  mainCategories: [MainCategory!]
+}
+
+type MainCategory {
+  id: Int!
+  title: String!
+  section: Section!
+  categories: [Category!]
+}
+
+type Category {
+  id: Int!
+  title: String!
+  mainCategory: MainCategory!
+  products: [Product!]
+}
+
+type Query {
+  getSections: [Section!]!
+}
