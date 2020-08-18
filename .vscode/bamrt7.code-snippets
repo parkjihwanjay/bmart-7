@@ -24,7 +24,7 @@
   "SCSS Base": {
     "scope": "scss",
     "prefix": "sb",
-    "body": ["@import 'src/styles/package;'", "", "$1"],
+    "body": ["@import 'src/styles/package';", "", "$1"],
     "description": "import package.scss"
   },
   "GraphQL Query Base": {
@@ -39,6 +39,6 @@
       "		}",
       "`"
     ],
-    "description": "import package.scss"
+    "description": "gql file base"
   }
 }
