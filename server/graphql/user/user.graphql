@@ -7,10 +7,13 @@ type User {
   phone: String
   address: String
   createdAt: Date!
+  favorites: [Favorite!]
 }
 
-input UserFindInput {
+type Favorite {
   id: Int!
+  user: User!
+  product: Product!
 }
 
 input UserSearchInput {
@@ -22,8 +25,9 @@ input UserSearchInput {
 }
 
 type Query {
-  getUserById(input: UserFindInput!): User
-  getUsers(input: UserSearchInput): [User]!
+  getUserById(id: Int!): User
+  getUsers(input: UserSearchInput): [User!]!
+  getUserFavorites(id: Int!): [Favorite!]
 }
 
 input UserInput {
@@ -34,6 +38,13 @@ input UserInput {
   address: String
 }
 
+input FavoriteInput {
+  userId: Int!
+  productId: Int!
+}
+
 type Mutation {
-  insertUser(input: UserInput!): User!
+  insertUser(input: UserInput!): User
+  insertFavorite(input: FavoriteInput): Favorite
+  deleteFavorite(id: Int!): Favorite
 }
