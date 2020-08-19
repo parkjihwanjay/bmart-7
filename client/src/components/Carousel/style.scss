@@ -3,6 +3,7 @@
 .slick-carousel {
   max-width: 450px;
   position: relative;
+  margin: 0 auto;
 
   .slick-slider {
     .slick-prev {
@@ -22,7 +23,7 @@
 
   .current-slide-number {
     position: absolute;
-    top: 1em;
-    right: 1em;
+    top: 1rem;
+    right: 1rem;
   }
 }

@@ -20,7 +20,7 @@ function App() {
             </Route>
           </Switch>
           <Switch>
-            <Route path="/main">
+            <Route path="/">
               <MainPage />
             </Route>
           </Switch>
