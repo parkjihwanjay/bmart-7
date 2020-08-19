@@ -1,4 +1,5 @@
 scalar Date
+scalar JSON
 
 type Product {
   id: Int!
@@ -10,5 +11,5 @@ type Product {
   isMain: Boolean!
   hit: Int!
   amount: Int!
-  imageUrls: [String!]
+  imageUrls: JSON!
 }
