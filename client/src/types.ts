@@ -30,3 +30,8 @@ export type Product = {
   amount: number
   imageUrls: string
 }
+
+export type Favorite = {
+  id: number
+  product: Product
+}
