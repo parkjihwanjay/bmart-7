@@ -11,11 +11,11 @@
     "body": [
       "import React from 'react'",
       "import './style.scss'",
-      "$4",
-      "export const $1 = () => {",
+      "$5",
+      "export const $1: React.FC<$2> = () => {",
       "	return (",
-      "		<${2:div} className='$3'>",
-      "		</${2:div}>",
+      "		<${3:div} className='$4'>",
+      "		</${3:div}>",
       "	)",
       "}"
     ],
