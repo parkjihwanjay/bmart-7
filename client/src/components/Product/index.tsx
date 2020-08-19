@@ -25,12 +25,14 @@ const Price: React.FC<PriceProps> = (props) => {
     <div className="price">
       {salePercent !== 0 ? (
         <>
-          <div className="sale-percent">{formatPrice(salePercent)}%</div>
-          <div className="origin-price">{formatPrice(originPrice)}원</div>
-          <div className="sale-price">{formatPrice(salePrice)}원</div>
+          <div className="origin-price-wrapper">
+            <div className="sale-percent">{formatPrice(salePercent)}%</div>
+            <div className="origin-price">{formatPrice(originPrice)}원</div>
+          </div>
+          <div className="display-price">{formatPrice(salePrice)}원</div>
         </>
       ) : (
-        <div className="sale-price">{formatPrice(originPrice)}원</div>
+        <div className="display-price">{formatPrice(originPrice)}원</div>
       )}
     </div>
   )
@@ -41,8 +43,8 @@ const Cart: React.FC<{ id: number }> = (id) => {
   const isInCart = false
 
   return (
-    <div className="cart icon-wrapper">
-      {isInCart ? <FaShoppingCart className="icon" /> : <GrCart className="icon" />}
+    <div className={'cart icon-wrapper ' + (isInCart ? 'active' : '')}>
+      {isInCart ? <GrCart className="icon" /> : <GrCart className="icon" />}
     </div>
   )
 }
@@ -55,16 +57,18 @@ export const Product: React.FC<ProductType> = (props) => {
     <li className="product">
       <div className="image-wrapper">
         <img src="https://img-cf.kurly.com/shop/data/goods/1593658385217y0.jpg" alt="no image" />
-        <div className="icon-container">
-          <div className="heart icon-wrapper">
-            <IoMdHeartEmpty className="icon" />
-            <IoMdHeart className="icon hidden" />
-          </div>
-          <Cart id={id} />
+        <div className="heart icon-wrapper">
+          <IoMdHeartEmpty className="icon" />
+          <IoMdHeart className="icon hidden" />
         </div>
       </div>
-      <div className="title">{title}</div>
-      <Price {...priceProps} />
+      <div className="product-wrapper">
+        <div className="info-wrapper">
+          <h3 className="title">{title}</h3>
+          <Price {...priceProps} />
+        </div>
+        <Cart id={id} />
+      </div>
     </li>
   )
 }
