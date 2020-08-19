@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import './style.scss'
 import { Product as ProductType } from '@/types'
-import { Product } from '@/components/Product'
+import { Product } from '@/components/common/Product'
 
 type ProductListType = {
   productList: ProductType[]

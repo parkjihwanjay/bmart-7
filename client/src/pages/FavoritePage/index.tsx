@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { client } from '@/ApolloClient'
-import { ProductList } from '@/components/ProductList'
+import { ProductList } from '@/components/common/ProductList'
 import './style.scss'
 import { GET_FAVORITES } from './gql'
 import { StoreContext, SetStoreContext } from '@/store'

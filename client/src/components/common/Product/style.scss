@@ -1,0 +1,115 @@
+@import 'src/styles/package';
+
+.product {
+  width: 100%;
+
+  .icon-wrapper {
+    cursor: pointer;
+  }
+
+  .image-wrapper {
+    position: relative;
+    margin-bottom: 6px;
+
+    img {
+      width: 100%;
+      height: auto;
+      border: 1px solid $color-gray-150;
+      border-radius: 4px;
+    }
+
+    .heart.icon-wrapper {
+      @include flex-center();
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+      background-color: unquote($color-white + '70');
+
+      .icon {
+        font-size: 2rem;
+        color: $color-pink;
+      }
+    }
+  }
+
+  .product-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0 2px;
+
+    .info-wrapper {
+      .title {
+        $line-height: 2rem;
+
+        font-size: 1.5rem;
+        line-height: $line-height;
+        max-height: $line-height * 2;
+        overflow: hidden;
+        word-break: break-all;
+        margin-bottom: 3px;
+      }
+
+      .price {
+        margin-bottom: 8px;
+
+        .origin-price-wrapper {
+          display: flex;
+          margin-bottom: 4px;
+
+          .sale-percent {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: $color-red;
+            margin-right: 4px;
+          }
+
+          .origin-price {
+            font-size: 1.4rem;
+            color: $color-gray-200;
+            text-decoration: line-through;
+            margin-right: 2px;
+          }
+        }
+
+        .display-price {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: $color-black;
+        }
+      }
+    }
+
+    .cart.icon-wrapper {
+      @include flex-center();
+      border: 1px solid $color-main;
+      border-radius: 8px;
+      padding: 3px 8px;
+      margin-left: 2px;
+
+      .icon {
+        font-size: 1.6rem;
+        color: $color-main;
+
+        * {
+          stroke: $color-main;
+        }
+      }
+
+      &.active {
+        background-color: $color-main;
+
+        .icon {
+          color: $color-gray-150;
+
+          * {
+            stroke: $color-gray-150;
+          }
+        }
+      }
+    }
+  }
+}
