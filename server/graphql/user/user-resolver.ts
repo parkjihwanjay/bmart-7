@@ -98,6 +98,9 @@ async function insertFavorite(parent, args: { input: FavoriteWhereUniqueInput },
         },
       },
     },
+    include: {
+      product: true,
+    },
   })
 }
 
