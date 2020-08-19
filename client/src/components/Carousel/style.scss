@@ -1,0 +1,23 @@
+@import 'src/styles/package';
+
+.slick-carousel {
+  max-width: 450px;
+  position: relative;
+  margin: 0 auto;
+
+  .slick-slider {
+    .slick-dots {
+      bottom: 0px;
+    }
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    display: none;
+  }
+
+  .current-slide-number {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}

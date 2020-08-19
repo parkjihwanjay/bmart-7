@@ -7,6 +7,7 @@ import { FavoritePage } from '@/pages/FavoritePage'
 import '@/styles/reset.scss'
 import '@/styles/base.scss'
 import '@/styles/fonts.scss'
+import { MainPage } from './pages/MainPage'
 import { StoreContext, SetStoreContext, StoreType, globalStore } from '@/store'
 
 function App() {
@@ -21,6 +22,11 @@ function App() {
               <Switch>
                 <Route path="/login">
                   <LoginPage />
+                </Route>
+              </Switch>
+              <Switch>
+                <Route path="/">
+                  <MainPage />
                 </Route>
               </Switch>
               <Switch>
