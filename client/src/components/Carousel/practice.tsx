@@ -57,8 +57,8 @@ export const Carousel: React.FC = () => {
       <div className="cur-number">
         {currentSlide + 1}/{imgUrlArr.length}
       </div>
-      <FiArrowLeftCircle className="left-arrow-btn" size={20} onClick={clickLeftBtn} />
-      <FiArrowRightCircle className="right-arrow-btn" size={20} onClick={clickLRightBtn} />
+      <FiArrowLeftCircle className="left-arrow-btn" onClick={clickLeftBtn} />
+      <FiArrowRightCircle className="right-arrow-btn" onClick={clickLRightBtn} />
     </div>
   )
 }
