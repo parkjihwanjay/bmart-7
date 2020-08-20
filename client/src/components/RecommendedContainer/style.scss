@@ -1,5 +1,31 @@
 @import 'src/styles/package';
 
+h2{
+    font-size : 1.5rem;
+    font-weight : bold;
+    padding-left: 1rem;
+    margin : 1rem 0
+}
+
 .recommended-container{
-    
+    width : 100%;
+    margin : 0 auto;
+    margin-top : 4rem;
+    span{
+        color: aqua;
+    }
+    .title-icon{
+        margin-right: 2px;
+        size : 2rem;
+    }
+    button{
+        width: 100%;
+        border:none;
+        font-size: 1.5rem;
+        border-top: 1px solid $color-gray-200;
+        border-bottom: 1px solid $color-gray-200;
+        background-color: transparent;
+        height: 5rem;
+        cursor: pointer;
+    }
 }
