@@ -4,6 +4,7 @@ scalar JSON
 type Product {
   id: Int!
   title: String!
+  description: String!
   category: Category!
   originPrice: Int!
   salePrice: Int!
@@ -17,4 +18,9 @@ type Product {
 
 type Query {
   getRecommended(offset:Int!, limit:Int!, categoryId:Int!): [Product!]
+  bannerImage: String!
+}
+
+type Mutation {
+  insertProducts: String
 }
