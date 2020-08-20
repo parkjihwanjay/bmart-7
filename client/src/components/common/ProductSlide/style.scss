@@ -1,0 +1,58 @@
+@import 'src/styles/package';
+
+.product-slide {
+  $side-padding: 10px;
+
+  width: 100vw;
+  padding: 12px 0;
+
+  .title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 calc(2px + #{$side-padding});
+    margin-bottom: 12px;
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+
+    .more-link {
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: $color-main;
+      cursor: pointer;
+
+      .arrow {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .slider-wrapper {
+    $column-num: 3;
+    $resize-buffer: 2.5;
+
+    overflow-x: scroll;
+
+    display: flex;
+    font-size: $resize-buffer / $column-num * $font-base-size;
+    padding-left: $side-padding;
+
+    .product {
+      min-width: calc(100% / #{$column-num});
+      margin-right: $side-padding;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+
+    .buffer {
+      min-width: $side-padding;
+    }
+  }
+}
