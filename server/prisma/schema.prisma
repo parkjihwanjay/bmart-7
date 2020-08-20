@@ -18,31 +18,31 @@ model User {
 }
 
 model MainCategory {
-  id         Int           @default(autoincrement()) @id
+  id         Int        @default(autoincrement()) @id
   title      String
   sectionId  Int
-  isMain     Int           @default(0)
-  section    Section       @relation(fields: [sectionId], references: [id])
-  categories SubCategory[]
+  isMain     Int        @default(0)
+  section    Section    @relation(fields: [sectionId], references: [id])
+  categories Category[]
 
   @@index([sectionId], name: "sectionId_idx")
 }
 
 model Product {
-  id          Int          @default(autoincrement()) @id
+  id          Int        @default(autoincrement()) @id
   title       String
   categoryId  Int?
   originPrice Int
   salePrice   Int
   salePercent Int?
-  isMain      Int          @default(0)
-  hit         Int          @default(0)
-  amount      Int          @default(0)
-  createdAt   DateTime     @default(now())
+  isMain      Int        @default(0)
+  hit         Int        @default(0)
+  amount      Int        @default(0)
+  createdAt   DateTime   @default(now())
   description String?
-  mainImage   String       @default("")
-  bannerImage String       @default("")
-  category    SubCategory? @relation(fields: [categoryId], references: [id])
+  mainImage   String     @default("")
+  bannerImage String     @default("")
+  category    Category?  @relation(fields: [categoryId], references: [id])
   favorites   Favorite[]
 
   @@index([categoryId], name: "categoryId_idx")
@@ -54,7 +54,7 @@ model Section {
   mainCategories MainCategory[]
 }
 
-model SubCategory {
+model Category {
   id             Int          @default(autoincrement()) @id
   title          String
   mainCategoryId Int
