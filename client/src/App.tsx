@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { client } from './ApolloClient'
 import { ApolloProvider } from 'react-apollo'
-import { LoginPage } from '@/pages/LoginPage'
+import { LoginPage } from '@/pages/LoginPage/LoginPage'
 import { FavoritePage } from '@/pages/FavoritePage'
 import '@/styles/reset.scss'
 import '@/styles/base.scss'
@@ -20,13 +20,13 @@ function App() {
           <Router>
             <div id="app">
               <Switch>
-                <Route path="/login">
-                  <LoginPage />
+                <Route path="/" exact>
+                  <MainPage />
                 </Route>
               </Switch>
               <Switch>
-                <Route path="/">
-                  <MainPage />
+                <Route path="/login">
+                  <LoginPage />
                 </Route>
               </Switch>
               <Switch>

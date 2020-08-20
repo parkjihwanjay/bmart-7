@@ -8,17 +8,22 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 1em;
+  margin-bottom: 15px;
   background-color: lightgray;
-  border-radius: 0.7em;
+  border-radius: 1em;
   cursor: pointer;
   width: 100%;
 
   .login-text {
     margin: 0 auto;
+    font-size: 1.5rem;
   }
 
+  .github {
+    size: 2rem;
+  }
   .facebook {
-    color: #1349c2;
+    color: #3b5998;
+    size: 2rem;
   }
 }
