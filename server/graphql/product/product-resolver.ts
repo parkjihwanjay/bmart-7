@@ -2,6 +2,7 @@ import { Context } from '../context'
 export const productResolver = {
   Query: {
     getRecommended,
+    getProducts,
   },
 }
 
@@ -16,6 +17,17 @@ async function getRecommended(parent, args, context: Context) {
     },
   })
 }
+
+async function getProducts(parent, args, context: Context) {
+  const { categoryId, limit } = args
+  return await context.prisma.product.findMany({
+    take: limit,
+    where: {
+      categoryId,
+    },
+  })
+}
+
 // import { data } from '../../utils/data'
 
 // export const productResolver = {
