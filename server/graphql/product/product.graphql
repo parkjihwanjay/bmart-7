@@ -11,5 +11,10 @@ type Product {
   isMain: Boolean!
   hit: Int!
   amount: Int!
-  imageUrls: JSON!
+  mainImage: String!
+  bannerImage : String!
+}
+
+type Query {
+  getRecommended(offset:Int!, limit:Int!, categoryId:Int!): [Product!]
 }
