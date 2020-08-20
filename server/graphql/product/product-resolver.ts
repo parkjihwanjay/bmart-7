@@ -15,6 +15,7 @@ async function getRecommended(parent, args, context: Context) {
       isMain: 1,
     },
   })
+}
 // import { data } from '../../utils/data'
 
 // export const productResolver = {
