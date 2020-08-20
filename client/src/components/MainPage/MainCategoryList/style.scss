@@ -1,0 +1,26 @@
+@import 'src/styles/package';
+
+.main-category-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 10px;
+  .category-text-wrap {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    .category-time-text {
+      font-size: 1rem;
+    }
+    .category-deadline-text {
+    }
+  }
+  .category-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    .category-item {
+      width: 20%;
+    }
+  }
+}
