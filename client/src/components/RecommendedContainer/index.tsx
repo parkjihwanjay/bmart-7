@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import './style.scss'
-import { StoreContext, SetStoreContext } from '@/store'
 import { ProductList } from '@/components/common/ProductList'
 import { GET_RECOMMENDED } from './gql'
 import { useQuery } from 'react-apollo'
@@ -16,9 +15,7 @@ export const RecommendedContainer: React.FC<IProps> = (props) => {
   const [pageNum, setPageNum] = useState(1)
   const offset = (pageNum-1)*limit
   const { title, categoryId, totalPageNum } = props
-  const store = useContext(StoreContext)
-  const favoriteList = store.favorites.map((favorite) => favorite.product)
-  const { loading, error, data, fetchMore } = useQuery(GET_RECOMMENDED, {
+  const { loading, error, data } = useQuery(GET_RECOMMENDED, {
     variables : {
       offset,
       limit,
