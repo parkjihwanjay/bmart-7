@@ -4,6 +4,7 @@ scalar JSON
 type Product {
   id: Int!
   title: String!
+  description: String!
   category: Category!
   originPrice: Int!
   salePrice: Int!
@@ -11,5 +12,10 @@ type Product {
   isMain: Boolean!
   hit: Int!
   amount: Int!
-  imageUrls: JSON!
+  mainImage: String!
+  bannerImage: String!
+}
+
+type Mutation {
+  insertProducts: String
 }

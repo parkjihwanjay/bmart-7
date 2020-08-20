@@ -21,6 +21,7 @@ model MainCategory {
   id         Int           @default(autoincrement()) @id
   title      String
   sectionId  Int
+  isMain     Int           @default(0)
   section    Section       @relation(fields: [sectionId], references: [id])
   categories SubCategory[]
 
@@ -38,7 +39,9 @@ model Product {
   hit         Int          @default(0)
   amount      Int          @default(0)
   createdAt   DateTime     @default(now())
-  imageUrls   Json
+  description String?
+  mainImage   String       @default("")
+  bannerImage String       @default("")
   category    SubCategory? @relation(fields: [categoryId], references: [id])
   favorites   Favorite[]
 
