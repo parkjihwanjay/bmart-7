@@ -29,15 +29,11 @@ export const RecommendedContainer: React.FC<IProps> = (props) => {
 
   const productList = data.getRecommended
 
-  function onClickHandler(e){
-    setPageNum(pageNum+1)
-  }
-
   return (
     <div className="recommended-container">
       <h2>{title}</h2>
       <ProductList column={3} productList={productList} />
-      <button onClick={onClickHandler}>
+      <button onClick={() => setPageNum(pageNum+1)}>
         <span><BsArrowCounterclockwise className="title-icon"/>{title}?</span> 다른 상품 보기 {pageNum}/{totalPageNum}
       </button>
     </div>
