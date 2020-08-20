@@ -20,6 +20,23 @@ type Query {
   getRecommended(offset:Int!, limit:Int!, categoryId:Int!): [Product!]
 }
 
-type Mutation {
-  insertProducts: String
+enum SortBy {
+  hit
+  createdAt
+  salePrice
+  salePercent
+}
+
+input ProductFilterInput {
+  categoryId: Int
+  mainCategoryId: Int
+  sectionId: Int
+  sortBy: SortBy
+  isAscending: Boolean
+  take: Int
+}
+
+type Query {
+  getProduct(id: Int!): Product
+  getProducts(input: ProductFilterInput): [Product!]!
 }

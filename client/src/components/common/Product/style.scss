@@ -21,15 +21,15 @@
     .heart.icon-wrapper {
       @include flex-center();
       position: absolute;
-      right: 10px;
-      bottom: 10px;
-      width: 30px;
-      height: 30px;
+      right: 1em;
+      bottom: 1em;
+      width: 3em;
+      height: 3em;
       border-radius: 100%;
       background-color: unquote($color-white + '70');
 
       .icon {
-        font-size: 2rem;
+        font-size: 2em;
         color: $color-pink;
       }
     }
@@ -43,13 +43,13 @@
 
     .info-wrapper {
       .title {
-        $line-height: 2rem;
+        $line-height: 1.6em;
 
-        font-size: 1.5rem;
+        font-size: 1.5em;
         line-height: $line-height;
-        max-height: $line-height * 2;
+        max-height: $line-height * 3;
         overflow: hidden;
-        word-break: break-all;
+        word-break: break-word;
         margin-bottom: 3px;
       }
 
@@ -61,14 +61,14 @@
           margin-bottom: 4px;
 
           .sale-percent {
-            font-size: 1.2rem;
+            font-size: 1.2em;
             font-weight: 600;
             color: $color-red;
             margin-right: 4px;
           }
 
           .origin-price {
-            font-size: 1.4rem;
+            font-size: 1.4em;
             color: $color-gray-200;
             text-decoration: line-through;
             margin-right: 2px;
@@ -76,7 +76,7 @@
         }
 
         .display-price {
-          font-size: 1.5rem;
+          font-size: 1.5em;
           font-weight: 600;
           color: $color-black;
         }
@@ -87,11 +87,11 @@
       @include flex-center();
       border: 1px solid $color-main;
       border-radius: 8px;
-      padding: 3px 8px;
+      padding: 0.3em 0.8em;
       margin-left: 2px;
 
       .icon {
-        font-size: 1.6rem;
+        font-size: 1.6em;
         color: $color-main;
 
         * {
