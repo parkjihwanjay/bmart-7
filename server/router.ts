@@ -16,24 +16,20 @@ router.get(
     // 해당 user에 맞는 토큰 생성 및 발행
     const token = await encodeJwt(user)
     res.status(200).json({
-      token
+      token,
     })
   }
 )
 
 export default router
 
-async function findOrCreateUser(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+async function findOrCreateUser(req: Request, res: Response, next: NextFunction) {
   const githubUser = req.githubUser
   // id를 기준으로 DB에서 user를 찾는다
   let user = await prisma.user.findOne({
     where: {
-      id: githubUser.id
-    }
+      id: githubUser.id,
+    },
   })
 
   // 해당 user가 없어 DB에 등록
@@ -42,8 +38,8 @@ async function findOrCreateUser(
       data: {
         id: githubUser.id,
         userId: githubUser.login,
-        email: githubUser.email
-      }
+        email: githubUser.email,
+      },
     })
   }
 
@@ -70,8 +66,8 @@ async function getAccessToken(code) {
     params: {
       client_id: process.env.GITHUB_CLIENT_ID,
       client_secret: process.env.GITHUB_CLIENT_SECRET,
-      code
-    }
+      code,
+    },
   })
 }
 
@@ -79,8 +75,8 @@ async function getUserData(accessToken: string) {
   return await axios(accessUserUrl, {
     method: 'GET',
     headers: {
-      Authorization: `token ${accessToken}`
-    }
+      Authorization: `token ${accessToken}`,
+    },
   })
 }
 
