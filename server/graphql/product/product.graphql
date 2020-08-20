@@ -18,7 +18,6 @@ type Product {
 
 type Query {
   getRecommended(offset:Int!, limit:Int!, categoryId:Int!): [Product!]
-  bannerImage: String!
 }
 
 type Mutation {
