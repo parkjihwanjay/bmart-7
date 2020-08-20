@@ -8,5 +8,9 @@ interface IconProps {
 
 export const MainCategoryItem: React.FC<IconProps> = (props) => {
   const { id, url } = props
-  return <img className="category-item" data-id={id} src={url} alt="cat" />
+  const clickMainIcon = (e: any) => {
+    // todo:클릭시 해당 페이지 이동
+    console.log(e.target)
+  }
+  return <img className="category-item" data-id={id} src={url} alt="cat" onClick={clickMainIcon} />
 }
