@@ -12,7 +12,7 @@ type IProps = {
 const getIcon = (icon: string) => {
   switch (icon) {
     case 'github':
-      return <FaGithubSquare size={50} />
+      return <FaGithubSquare className="github" size={50} />
     case 'facebook':
       return <FaFacebookSquare className="facebook" size={50} />
   }
