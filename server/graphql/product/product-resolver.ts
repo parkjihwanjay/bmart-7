@@ -6,7 +6,7 @@ export const productResolver = {
     getProduct,
     getProducts,
     getRecommended,
-    // getProducts,
+    getSearchProducts,
   },
 }
 
@@ -18,18 +18,6 @@ async function getProduct(parent, args: ProductWhereUniqueInput, context: Contex
     },
   })
 }
-
-// async function getProducts(parent, args, context: Context) {
-//   const { categoryId, limit } = args
-//   return await context.prisma.product.findMany({
-//     take: limit,
-//     where: {
-//       categoryId,
-//     },
-//   })
-// }
-
-// import { data } from '../../utils/data'
 
 type ProductFilterInput = {
   categoryId?: number
@@ -95,6 +83,18 @@ async function getRecommended(parent, args, context: Context) {
     where: {
       categoryId,
       isMain: 1,
+    },
+  })
+}
+
+async function getSearchProducts(parent, args: { searchInput: string }, context: Context) {
+  const { searchInput } = args
+
+  return await context.prisma.product.findMany({
+    where: {
+      title: {
+        contains: searchInput,
+      },
     },
   })
 }
