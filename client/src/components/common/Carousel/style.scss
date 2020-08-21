@@ -8,6 +8,11 @@
       bottom: 0px;
     }
   }
+
+  .slick-next {
+    right: 0;
+  }
+
   .slick-prev:before,
   .slick-next:before {
     display: none;
