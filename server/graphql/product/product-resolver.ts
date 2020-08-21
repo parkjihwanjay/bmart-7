@@ -6,7 +6,6 @@ export const productResolver = {
     getProduct,
     getProducts,
     getRecommended,
-    getProducts,
   },
 }
 
