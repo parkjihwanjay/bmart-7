@@ -18,6 +18,7 @@ type Product {
 
 type Query {
   getRecommended(offset:Int!, limit:Int!, categoryId:Int!): [Product!]
+  getProducts(limit:Int!, categoryId:Int!) : [Product!]
 }
 
 enum SortBy {
