@@ -8,6 +8,8 @@ import { client } from '@/ApolloClient'
 import { INSERT_FAVORITES, DELETE_FAVORITES } from './gql'
 import { StoreContext, SetStoreContext } from '@/store'
 
+const imageBaseUrl = process.env.REACT_APP_S3_URL
+
 type PriceProps = {
   originPrice: number
   salePrice: number
@@ -47,7 +49,7 @@ const HeartIcon: React.FC<{ id: number }> = ({ id }) => {
   const insertFavorite = async () => {
     const {
       data: { insertFavorite },
-    } = await client.mutate({ mutation: INSERT_FAVORITES(5, 4) })
+    } = await client.mutate({ mutation: INSERT_FAVORITES(5, id) })
 
     const newStore = { ...store }
     newStore.favorites = [...newStore.favorites, insertFavorite]
@@ -91,13 +93,13 @@ const CartIcon: React.FC<{ id: number }> = ({ id }) => {
 }
 
 export const Product: React.FC<ProductType> = (props) => {
-  const { id, title, originPrice, salePrice, salePercent, amount, imageUrls } = props
+  const { id, title, originPrice, salePrice, salePercent, amount, mainImage } = props
   const priceProps = { originPrice, salePrice, salePercent }
 
   return (
     <li className="product">
       <div className="image-wrapper">
-        <img src="https://img-cf.kurly.com/shop/data/goods/1593658385217y0.jpg" alt="no image" />
+        <img src={imageBaseUrl + mainImage} alt="no image" />
         <HeartIcon id={id} />
       </div>
       <div className="product-wrapper">

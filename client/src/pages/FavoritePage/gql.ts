@@ -11,7 +11,7 @@ export const GET_FAVORITES = (userId) => gql`
         salePrice
         salePercent
         amount
-        imageUrls
+        mainImage
       }
     }
   }
