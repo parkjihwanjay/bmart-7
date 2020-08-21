@@ -6,7 +6,6 @@ export const productResolver = {
     getProduct,
     getProducts,
     getRecommended,
-    getProducts,
   },
 }
 
@@ -25,84 +24,54 @@ type ProductFilterInput = {
   sectionId?: number
   sortBy?: string
   isAscending?: boolean
-  take: number
+  limit?: number
 }
 
 async function getProducts(parent, args: { input: ProductFilterInput }, context: Context) {
-  const { categoryId, mainCategoryId, sectionId, sortBy, isAscending, take } = args.input
+  const { categoryId, mainCategoryId, sectionId, sortBy, isAscending, limit } = args.input
 
-  const sortCondition: ProductOrderByInput = {}
-  if (sortBy) sortCondition[sortBy] = isAscending ? 'asc' : 'desc'
-
-  let productList = []
-  if (categoryId) {
-    const category = await context.prisma.category.findOne({
-      where: {
-        id: categoryId,
-      },
-      include: {
-        products: {
-          orderBy: sortCondition,
-          take,
-        },
-      },
-    })
-    productList = category.products
-    console.log(productList.length)
-  } else if (mainCategoryId) {
-    const mainCategory = await context.prisma.mainCategory.findOne({
-      where: {
-        id: mainCategoryId,
-      },
-      include: {
-        categories: {
-          include: {
-            products: {
-              orderBy: sortCondition,
-              take,
-            },
-          },
-        },
-      },
-    })
-
-    mainCategory.categories.forEach((category) => {
-      productList = [...productList, ...category.products]
-    })
-  } else if (sectionId) {
-    const section = await context.prisma.section.findOne({
-      where: {
-        id: sectionId,
-      },
-      include: {
-        mainCategories: {
-          include: {
-            categories: {
-              include: {
-                products: {
-                  orderBy: sortCondition,
-                  take,
-                },
-              },
-            },
-          },
-        },
-      },
-    })
-
-    section.mainCategories.forEach((mainCategory) => {
-      mainCategory.categories.forEach((category) => {
-        productList = [...productList, ...category.products]
-      })
-    })
-  } else {
-    productList = await context.prisma.product.findMany({
-      orderBy: sortCondition,
-      take,
-    })
+  const sortCondition: ProductOrderByInput = { id: 'asc' }
+  if (sortBy) {
+    delete sortCondition.id
+    sortCondition[sortBy] = isAscending ? 'asc' : 'desc'
   }
 
-  return productList
+  if (categoryId) {
+    return await context.prisma.product.findMany({
+      where: {
+        categoryId: categoryId,
+      },
+      orderBy: sortCondition,
+      take: limit,
+    })
+  } else if (mainCategoryId) {
+    return await context.prisma.product.findMany({
+      where: {
+        category: {
+          mainCategoryId,
+        },
+      },
+      orderBy: sortCondition,
+      take: limit,
+    })
+  } else if (sectionId) {
+    return await context.prisma.product.findMany({
+      where: {
+        category: {
+          mainCategory: {
+            sectionId,
+          },
+        },
+      },
+      orderBy: sortCondition,
+      take: limit,
+    })
+  } else {
+    return await context.prisma.product.findMany({
+      orderBy: sortCondition,
+      take: limit,
+    })
+  }
 }
 
 async function getRecommended(parent, args, context: Context) {

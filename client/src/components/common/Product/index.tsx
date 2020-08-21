@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import './style.scss'
 import { Product as ProductType } from '@/types'
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io'
+import { FaShoppingCart } from 'react-icons/fa'
 import { GrCart } from 'react-icons/gr'
 import { formatPrice } from '@/utils'
 import { client } from '@/ApolloClient'
@@ -87,27 +88,35 @@ const CartIcon: React.FC<{ id: number }> = ({ id }) => {
 
   return (
     <div className={'cart icon-wrapper ' + (isInCart ? 'active' : '')}>
-      {isInCart ? <GrCart className="icon" /> : <GrCart className="icon" />}
+      {isInCart ? <FaShoppingCart className="icon" /> : <GrCart className="icon" />}
     </div>
   )
 }
 
-export const Product: React.FC<ProductType> = (props) => {
-  const { id, title, originPrice, salePrice, salePercent, amount, mainImage } = props
+export type ProductProps = {
+  product: ProductType
+}
+
+export const Product: React.FC<ProductProps> = (props) => {
+  const {
+    product: { id, title, originPrice, salePrice, salePercent, amount, mainImage },
+  } = props
   const priceProps = { originPrice, salePrice, salePercent }
 
   return (
     <li className="product">
       <div className="image-wrapper">
         <img src={imageBaseUrl + mainImage} alt="no image" />
-        <HeartIcon id={id} />
+        <div className="icon-container">
+          <CartIcon id={id} />
+          <HeartIcon id={id} />
+        </div>
       </div>
       <div className="product-wrapper">
         <div className="info-wrapper">
           <h3 className="title">{title}</h3>
           <Price {...priceProps} />
         </div>
-        <CartIcon id={id} />
       </div>
     </li>
   )
