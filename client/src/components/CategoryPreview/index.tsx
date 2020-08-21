@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { useQuery } from 'react-apollo'
-import {GET_PRODUCTS} from './gql'
+import { GET_PRODUCTS } from './gql'
 import './style.scss'
-import {ProductList} from '@/components/common/ProductList'
+import { ProductList } from '@/components/common/ProductList'
 
 interface IProps {
   title : string
@@ -15,15 +15,17 @@ export const CategoryPreview: React.FC<IProps> = (props) => {
   const {title, categoryId, id} = props
 
   const { loading, error, data } = useQuery(GET_PRODUCTS, {
-    variables : {
-      limit,
-      categoryId
+    variables: {
+      input: {
+        limit,
+        categoryId,
+      },
     },
-    fetchPolicy: "cache-and-network"
+    fetchPolicy: 'cache-and-network',
   })
 
-  if(loading) return <p>Loading...</p>
-  if(error) return <p>Error...</p>
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error...</p>
 
   const productList = data.getProducts
 

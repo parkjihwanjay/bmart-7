@@ -13,12 +13,7 @@ type Product {
   hit: Int!
   amount: Int!
   mainImage: String!
-  bannerImage : String!
-}
-
-type Query {
-  getRecommended(offset:Int!, limit:Int!, categoryId:Int!): [Product!]
-  getProducts(limit:Int!, categoryId:Int!) : [Product!]
+  bannerImage: String!
 }
 
 enum SortBy {
@@ -34,10 +29,11 @@ input ProductFilterInput {
   sectionId: Int
   sortBy: SortBy
   isAscending: Boolean
-  take: Int
+  limit: Int
 }
 
 type Query {
   getProduct(id: Int!): Product
   getProducts(input: ProductFilterInput): [Product!]!
+  getRecommended(offset: Int!, limit: Int!, categoryId: Int!): [Product!]
 }

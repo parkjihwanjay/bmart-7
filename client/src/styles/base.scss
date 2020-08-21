@@ -1,7 +1,7 @@
 @import 'package';
 
 html {
-  font-size: 10px;
+  font-size: $font-base-size;
 
   * {
     @include font-family();

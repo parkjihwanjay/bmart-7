@@ -28,7 +28,7 @@ export const ProductList: React.FC<ProductListType> = (props) => {
   return (
     <ul className="product-list" ref={productListElement}>
       {productList.map((product) => (
-        <Product {...product} key={product.id} />
+        <Product product={product} key={product.id} />
       ))}
     </ul>
   )

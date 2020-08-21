@@ -25,7 +25,7 @@ export const MainCategoryList: React.FC = () => {
       </div>
       <ul className="category-wrap">
         {categoryimgUrlList.map((url: string, idx: number) => (
-          <MainCategoryItem id={idx} url={url} />
+          <MainCategoryItem id={idx} url={url} key={idx} />
         ))}
       </ul>
     </div>
