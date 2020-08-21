@@ -5,13 +5,14 @@ import './style.scss'
 import { ProductList } from '@/components/common/ProductList'
 
 interface IProps {
-  title: string
-  categoryId: number
+  title : string
+  categoryId : number
+  id : string
 }
 const limit = 10
 
 export const CategoryPreview: React.FC<IProps> = (props) => {
-  const { title, categoryId } = props
+  const {title, categoryId, id} = props
 
   const { loading, error, data } = useQuery(GET_PRODUCTS, {
     variables: {
@@ -29,12 +30,15 @@ export const CategoryPreview: React.FC<IProps> = (props) => {
   const productList = data.getProducts
 
   return (
-    <div className="category-preview-container">
-      <div className="header">
-        <h2>{title}</h2>
-        <a href="#">더보기 &gt;</a>
-      </div>
-      <ProductList column={2} productList={productList} />
+    <div>
+      <div className="category-buffer" id={id}></div>
+      <div className='category-preview-container'>
+        <div className="header">
+          <h2>{title}</h2>
+          <a href="#">더보기 &gt;</a>
+        </div>
+        <ProductList column={2} productList={productList} />
+      </div>  
     </div>
   )
 }
