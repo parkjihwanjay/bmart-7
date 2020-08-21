@@ -19,15 +19,15 @@ async function getProduct(parent, args: ProductWhereUniqueInput, context: Contex
   })
 }
 
-async function getProducts(parent, args, context: Context) {
-  const { categoryId, limit } = args
-  return await context.prisma.product.findMany({
-    take: limit,
-    where: {
-      categoryId,
-    },
-  })
-}
+// async function getProducts(parent, args, context: Context) {
+//   const { categoryId, limit } = args
+//   return await context.prisma.product.findMany({
+//     take: limit,
+//     where: {
+//       categoryId,
+//     },
+//   })
+// }
 
 // import { data } from '../../utils/data'
 
@@ -40,52 +40,52 @@ type ProductFilterInput = {
   limit?: number
 }
 
-// async function getProducts(parent, args: { input: ProductFilterInput }, context: Context) {
-//   const { categoryId, mainCategoryId, sectionId, sortBy, isAscending, limit } = args.input
+async function getProducts(parent, args: { input: ProductFilterInput }, context: Context) {
+  const { categoryId, mainCategoryId, sectionId, sortBy, isAscending, limit } = args.input
 
-//   const sortCondition: ProductOrderByInput = { id: 'asc' }
-//   if (sortBy) {
-//     delete sortCondition.id
-//     sortCondition[sortBy] = isAscending ? 'asc' : 'desc'
-//   }
+  const sortCondition: ProductOrderByInput = { id: 'asc' }
+  if (sortBy) {
+    delete sortCondition.id
+    sortCondition[sortBy] = isAscending ? 'asc' : 'desc'
+  }
 
-//   if (categoryId) {
-//     return await context.prisma.product.findMany({
-//       where: {
-//         categoryId: categoryId,
-//       },
-//       orderBy: sortCondition,
-//       take: limit,
-//     })
-//   } else if (mainCategoryId) {
-//     return await context.prisma.product.findMany({
-//       where: {
-//         category: {
-//           mainCategoryId,
-//         },
-//       },
-//       orderBy: sortCondition,
-//       take: limit,
-//     })
-//   } else if (sectionId) {
-//     return await context.prisma.product.findMany({
-//       where: {
-//         category: {
-//           mainCategory: {
-//             sectionId,
-//           },
-//         },
-//       },
-//       orderBy: sortCondition,
-//       take: limit,
-//     })
-//   } else {
-//     return await context.prisma.product.findMany({
-//       orderBy: sortCondition,
-//       take: limit,
-//     })
-//   }
-// }
+  if (categoryId) {
+    return await context.prisma.product.findMany({
+      where: {
+        categoryId: categoryId,
+      },
+      orderBy: sortCondition,
+      take: limit,
+    })
+  } else if (mainCategoryId) {
+    return await context.prisma.product.findMany({
+      where: {
+        category: {
+          mainCategoryId,
+        },
+      },
+      orderBy: sortCondition,
+      take: limit,
+    })
+  } else if (sectionId) {
+    return await context.prisma.product.findMany({
+      where: {
+        category: {
+          mainCategory: {
+            sectionId,
+          },
+        },
+      },
+      orderBy: sortCondition,
+      take: limit,
+    })
+  } else {
+    return await context.prisma.product.findMany({
+      orderBy: sortCondition,
+      take: limit,
+    })
+  }
+}
 
 async function getRecommended(parent, args, context: Context) {
   const { categoryId, limit, offset } = args
