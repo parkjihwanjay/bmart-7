@@ -1,33 +1,35 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { useQuery } from 'react-apollo'
-import {GET_PRODUCTS} from './gql'
+import { GET_PRODUCTS } from './gql'
 import './style.scss'
-import {ProductList} from '@/components/common/ProductList'
+import { ProductList } from '@/components/common/ProductList'
 
 interface IProps {
-  title : string
-  categoryId : number
+  title: string
+  categoryId: number
 }
 const limit = 10
 
 export const CategoryPreview: React.FC<IProps> = (props) => {
-  const {title, categoryId} = props
+  const { title, categoryId } = props
 
   const { loading, error, data } = useQuery(GET_PRODUCTS, {
-    variables : {
-      limit,
-      categoryId
+    variables: {
+      input: {
+        limit,
+        categoryId,
+      },
     },
-    fetchPolicy: "cache-and-network"
+    fetchPolicy: 'cache-and-network',
   })
 
-  if(loading) return <p>Loading...</p>
-  if(error) return <p>Error...</p>
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error...</p>
 
   const productList = data.getProducts
 
   return (
-    <div className='category-preview-container'>
+    <div className="category-preview-container">
       <div className="header">
         <h2>{title}</h2>
         <a href="#">더보기 &gt;</a>

@@ -16,11 +16,6 @@ type Product {
   bannerImage: String!
 }
 
-type Query {
-  getRecommended(offset: Int!, limit: Int!, categoryId: Int!): [Product!]
-  getProducts(limit: Int!, categoryId: Int!): [Product!]
-}
-
 enum SortBy {
   hit
   createdAt
@@ -40,4 +35,5 @@ input ProductFilterInput {
 type Query {
   getProduct(id: Int!): Product
   getProducts(input: ProductFilterInput): [Product!]!
+  getRecommended(offset: Int!, limit: Int!, categoryId: Int!): [Product!]
 }

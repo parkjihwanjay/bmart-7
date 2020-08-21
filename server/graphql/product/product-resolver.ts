@@ -24,7 +24,7 @@ type ProductFilterInput = {
   sectionId?: number
   sortBy?: string
   isAscending?: boolean
-  limit: number
+  limit?: number
 }
 
 async function getProducts(parent, args: { input: ProductFilterInput }, context: Context) {

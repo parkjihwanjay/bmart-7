@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export const GET_PRODUCTS = gql`
-  query ($categoryId : Int!, $limit:Int!){
-    getProducts(categoryId : $categoryId, limit:$limit) {
+  query($input: ProductFilterInput) {
+    getProducts(input: $input) {
       id
       title
       originPrice
