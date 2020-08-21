@@ -1,7 +1,5 @@
 import React,{useState, useRef, useEffect} from 'react'
 import './style.scss'
-import {GET_MAIN_CATEGORIES} from './gql'
-import { useQuery } from 'react-apollo'
 
 interface IProps {
   mainCategoryList : []
