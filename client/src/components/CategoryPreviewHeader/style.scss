@@ -1,0 +1,34 @@
+@import 'src/styles/package';
+
+.category-header{
+  overflow-x: scroll;
+  height: 6rem;
+  padding-top: 2rem;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-top: 2rem;
+  background-color: $color-white;
+  
+  a{
+    text-decoration: none;
+    margin: 0 2rem;
+    padding:1rem;
+    font-size: 1.5rem;
+    color: $color-gray-200;
+  }
+  .active{
+    background-color: $color-main;
+    border-radius: 2rem;   
+    color: $color-white;
+  }
+}
+.category-header::-webkit-scrollbar{
+  display: none;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100; /* this is optional and should be different for every project */
+}

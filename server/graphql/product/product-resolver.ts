@@ -6,6 +6,7 @@ export const productResolver = {
     getProduct,
     getProducts,
     getRecommended,
+    // getProducts,
   },
 }
 
@@ -17,6 +18,18 @@ async function getProduct(parent, args: ProductWhereUniqueInput, context: Contex
     },
   })
 }
+
+// async function getProducts(parent, args, context: Context) {
+//   const { categoryId, limit } = args
+//   return await context.prisma.product.findMany({
+//     take: limit,
+//     where: {
+//       categoryId,
+//     },
+//   })
+// }
+
+// import { data } from '../../utils/data'
 
 type ProductFilterInput = {
   categoryId?: number

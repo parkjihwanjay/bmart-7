@@ -1,7 +1,10 @@
 @import 'src/styles/package';
 
-.category-preview-container{
+.category-buffer{
   height: 5rem;
+}
+
+.category-preview-container{
   .header{
     display: flex;
     justify-content: space-between;
