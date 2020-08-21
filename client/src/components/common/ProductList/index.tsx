@@ -7,7 +7,7 @@ const FONT_SIZE: number = 10
 const BASE_COLUMN: number = 2
 const BUFFER: number = 0.5
 
-type ProductListType = {
+export type ProductListType = {
   productList: ProductType[]
   column: number
 }
