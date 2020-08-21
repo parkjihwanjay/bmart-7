@@ -24,18 +24,12 @@ function App() {
                 <Route path="/login" exact>
                   <LoginPage />
                 </Route>
-              </Switch>
-              <Switch>
                 <Route path="/" exact>
                   <MainPage />
                 </Route>
-              </Switch>
-              <Switch>
                 <Route path="/favorite" exact>
                   <FavoritePage />
                 </Route>
-              </Switch>
-              <Switch>
                 <Route path="/test" exact>
                   <TestPage />
                 </Route>
