@@ -6,6 +6,7 @@ export const productResolver = {
     getProduct,
     getProducts,
     getRecommended,
+    getSearchProducts,
   },
 }
 
@@ -82,6 +83,18 @@ async function getRecommended(parent, args, context: Context) {
     where: {
       categoryId,
       isMain: 1,
+    },
+  })
+}
+
+async function getSearchProducts(parent, args: { searchInput: string }, context: Context) {
+  const { searchInput } = args
+
+  return await context.prisma.product.findMany({
+    where: {
+      title: {
+        contains: searchInput,
+      },
     },
   })
 }
