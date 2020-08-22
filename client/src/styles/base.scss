@@ -3,6 +3,10 @@
 html {
   font-size: $font-base-size;
 
+  @media (max-width: $mobile-max-width) {
+    font-size: $font-desktop-size;
+  }
+
   * {
     @include font-family();
   }
@@ -22,6 +26,6 @@ html {
 }
 
 #app {
-  max-width: 800px;
+  max-width: $mobile-max-width;
   margin: 0 auto;
 }
