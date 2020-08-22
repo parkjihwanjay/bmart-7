@@ -25,11 +25,11 @@ jobs:
       - name: Cache node modules # node modules 캐싱
         uses: actions/cache@v1
         with:
-        path: client/node_modules
-        key: ${{ runner.OS }}-build-${{ hashFiles('client/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.OS }}-client/build-
-          ${{ runner.OS }}-
+          path: client/node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('client/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-client/build-
+            ${{ runner.OS }}-
 
       - name: Build # 의존 파일 설치
         run: |
