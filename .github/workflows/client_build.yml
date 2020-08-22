@@ -34,12 +34,14 @@ jobs:
       - name: Install # 의존 파일 설치
         run: |
           cd client
-          npm i --production
+          npm i
 
       - name: Build
         run: |
           cd client
           npm run build
+        env:
+          CI: false
 
       - name: Upload to S3
         env:
