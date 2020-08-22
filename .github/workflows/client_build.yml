@@ -2,7 +2,7 @@ name: Client Build
 
 on:
   push:
-    branches: [feature/#86/github-action-deploy]
+    branches: [dev]
     paths:
       - "client/**"
 
