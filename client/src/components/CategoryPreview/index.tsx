@@ -17,10 +17,7 @@ const limit = 10
 export const CategoryPreview: React.FC<IProps> = (props) => {
   const { title, mainCategoryId, id, io } = props
 
-  const previewRef: {
-    current: HTMLDivElement
-  } = useRef()
-
+  const previewRef = useRef<HTMLDivElement>()
   if (previewRef.current) io.observe(previewRef.current)
 
   const { loading, error, data } = useQuery(GET_PRODUCTS, {

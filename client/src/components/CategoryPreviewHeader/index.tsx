@@ -15,9 +15,7 @@ export const CategoryPreviewHeader: React.FC<IProps> = (props) => {
   const { mainCategoryList, currentCategoryId, changeCategory } = props
   const aRef: refObject = {}
 
-  const headerRef: {
-    current: HTMLDivElement
-  } = useRef()
+  const headerRef = useRef<HTMLDivElement>()
 
   useEffect(() => {
     scrollHeader()
