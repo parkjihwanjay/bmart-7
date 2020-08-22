@@ -5,6 +5,7 @@ html {
 
   * {
     @include font-family();
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
