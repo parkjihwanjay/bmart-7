@@ -1,48 +1,51 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useReducer } from 'react'
 import './style.scss'
 
 interface IProps {
   mainCategoryList: []
+  currentCategoryId: number
+  changeCategory: (categoryId: number) => void
+}
+
+interface refObject {
+  [key: string]: HTMLElement
 }
 
 export const CategoryPreviewHeader: React.FC<IProps> = (props) => {
-  const { mainCategoryList } = props
+  const { mainCategoryList, currentCategoryId, changeCategory } = props
+  const aRef: refObject = {}
+
   const headerRef: {
     current: HTMLDivElement
   } = useRef()
-  const [categoryId, setCategoryId] = useState(17)
 
-  const onClickHandler = ({ e, id, idx }) => {
-    scrollHeader(e)
-    setCategoryId(id)
+  useEffect(() => {
+    scrollHeader()
+  }, [currentCategoryId])
+
+  const onClickHandler = ({ id }) => {
+    if (id !== currentCategoryId) changeCategory(id)
   }
-  const scrollHeader = (e) => {
+
+  const scrollHeader = () => {
     const $header = headerRef.current
-    $header.scrollLeft = e.target.offsetLeft - $header.offsetWidth / 2 + e.target.offsetWidth / 2
+    const $currentCategory = aRef[currentCategoryId]
+    const diff =
+      $currentCategory.offsetLeft - $header.offsetWidth / 2 + $currentCategory.offsetWidth / 2
+    $header.scrollLeft = diff
   }
 
   return (
     <div className="category-header sticky" ref={headerRef}>
-      {mainCategoryList.map((category, idx) => {
-        const { title, id } = category
-        return id === categoryId ? (
+      {mainCategoryList.map(({ title, id }, idx) => {
+        return (
           <a
-            className="active"
+            className={id === currentCategoryId ? 'active' : ''}
             data-category={id}
             href={`#catgory-${id}`}
             key={id}
-            onClick={(e) => onClickHandler({ e, id, idx })}
-          >
-            {title}
-          </a>
-        ) : (
-          <a
-            href={`#catgory-${id}`}
-            data-category={id}
-            key={id}
-            onClick={(e) => {
-              onClickHandler({ e, id, idx })
-            }}
+            onClick={(e) => onClickHandler({ id })}
+            ref={(el) => (aRef[id] = el)}
           >
             {title}
           </a>
