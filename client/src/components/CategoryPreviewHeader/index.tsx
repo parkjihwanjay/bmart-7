@@ -11,14 +11,16 @@ export const CategoryPreviewHeader: React.FC<IProps> = (props) => {
     current: HTMLDivElement
   } = useRef()
   const [categoryId, setCategoryId] = useState(17)
-  const [index, setIndex] = useState(0)
 
   const onClickHandler = ({ e, id, idx }) => {
+    scrollHeader(e)
+    setCategoryId(id)
+  }
+  const scrollHeader = (e) => {
     const $header = headerRef.current
     $header.scrollLeft = e.target.offsetLeft - $header.offsetWidth / 2 + e.target.offsetWidth / 2
-    setCategoryId(id)
-    setIndex(idx)
   }
+
   return (
     <div className="category-header sticky" ref={headerRef}>
       {mainCategoryList.map((category, idx) => {
