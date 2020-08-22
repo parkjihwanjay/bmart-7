@@ -1,23 +1,23 @@
 @import 'src/styles/package';
 
-.category-buffer{
+.category-buffer {
   height: 5rem;
 }
 
-.category-preview-container{
-  .header{
+.category-preview-container {
+  .header {
     display: flex;
     justify-content: space-between;
-    padding : 0 1rem;
+    padding: 0 1rem;
   }
-  h2{
-    padding:0;
+  h2 {
+    padding: 0;
   }
-  a{
+  a {
     margin: 1rem 0;
     text-decoration: none;
-    color : $color-main;
-    font-weight : bold;
-    font-size : 1.5rem
+    color: $color-main;
+    font-weight: bold;
+    font-size: 1.5rem;
   }
 }
