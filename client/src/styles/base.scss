@@ -9,7 +9,16 @@ html {
 }
 
 .hidden {
+  visibility: hidden !important;
+}
+
+.dp-none {
   display: none !important;
+}
+
+.stop-scroll {
+  height: 100vh;
+  overflow-y: hidden;
 }
 
 #app {
