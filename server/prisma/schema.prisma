@@ -22,6 +22,7 @@ model MainCategory {
   title      String
   sectionId  Int
   isMain     Int        @default(0)
+  imageUrl   String?    @default("")
   section    Section    @relation(fields: [sectionId], references: [id])
   categories Category[]
 
