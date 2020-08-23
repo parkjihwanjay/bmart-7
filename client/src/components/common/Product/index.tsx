@@ -95,18 +95,25 @@ const CartIcon: React.FC<{ id: number }> = ({ id }) => {
 
 export type ProductProps = {
   product: ProductType
+  eagerLoading?: boolean
 }
 
 export const Product: React.FC<ProductProps> = (props) => {
   const {
     product: { id, title, originPrice, salePrice, salePercent, amount, mainImage },
+    eagerLoading,
   } = props
   const priceProps = { originPrice, salePrice, salePercent }
 
   return (
     <li className="product">
       <div className="image-wrapper">
-        <img src={imageBaseUrl + mainImage} alt="no image" />
+        {eagerLoading ? (
+          <img src={imageBaseUrl + mainImage} loading="eager" alt="no image" />
+        ) : (
+          <img src={imageBaseUrl + mainImage} loading="lazy" alt="no image" />
+        )}
+
         <div className="icon-container">
           <CartIcon id={id} />
           <HeartIcon id={id} />
